@@ -24,7 +24,7 @@ function load_video(){
     }
 
     core_escape();
-    core_elements['viewer'].innerHTML = '<iframe allowfullscreen frameborder=0 id=frame height=' + (globalThis.innerHeight - 4) + ' id=frame src="https://youtube.com/embed/' + video + '?vq=medium" width=100%></iframe>';
+    core_elements['viewer'].innerHTML = '<iframe allowfullscreen frameborder=0 height=' + (globalThis.innerHeight - 4) + ' id=frame src="https://youtube.com/embed/' + video + '?vq=medium" width=100%></iframe>';
 }
 
 function repo_init(){
