@@ -13,7 +13,9 @@ function load_video(){
         if(!URL.canParse(url)){
             return;
         }
-        video = url.searchParams.get('v');
+        video = url.hostname === 'youtu.be'
+          ? url.pathname.substr(1)
+          : url.searchParams.get('v');
         if(video.length !== 11){
             return;
         }
