@@ -17,9 +17,13 @@ function load_video(){
         if(video.length !== 11){
             return;
         }
+        const time = url.searchParams.get('t');
+        if(time){
+            video += '?start=' + time.substr(0, time.length - 1);
+        }
     }
 
-    video = 'https://youtube.com/embed/' + video + '?vq=medium';
+    video = 'https://youtube.com/embed/' + video;
 
     if(core_elements['frame']){
         core_elements['frame'].src = video;
