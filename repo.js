@@ -29,7 +29,7 @@ function load_video(){
         core_elements['frame'].src = video;
 
     }else{
-        core_elements['viewer'].innerHTML = '<iframe allowfullscreen frameborder=0 height=' + (globalThis.innerHeight - 4) + ' id=frame referrerpolicy=no-referrer src="' + video + '" width=100%></iframe>';
+        document.getElementById('viewer').innerHTML = '<iframe allowfullscreen frameborder=0 height=' + (globalThis.innerHeight - 4) + ' id=frame referrerpolicy=no-referrer src="' + video + '" width=100%></iframe>';
         core_elements['frame'] = document.getElementById('frame');
     }
 
@@ -50,9 +50,6 @@ function repo_init(){
         'video': '',
       },
       'title': 'YouTubeViewer.htm',
-      'ui-elements': [
-        'viewer',
-      ],
     });
 
     document.body.style.paddingTop = 0;
