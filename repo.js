@@ -23,11 +23,11 @@ function load_video(){
         if(time){
             video += '?start=' + time.substr(0, time.length - 1);
         }
-        if(core_storage_data['quality'].length){
-            video += (video.length === 11 ? '?' : '&') + 'rel=0&vq=' + core_storage_data['quality'];
-        }
     }
 
+    if(core_storage_data['quality'].length){
+        video += (video.length === 11 ? '?' : '&') + 'rel=0&vq=' + core_storage_data['quality'];
+    }
     video = 'https://youtube.com/embed/' + video;
 
     if(core_elements['frame']){
