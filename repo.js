@@ -23,6 +23,9 @@ function load_video(){
         if(time){
             video += '?start=' + time.substr(0, time.length - 1);
         }
+        if(core_storage_data['quality'].length){
+            video += (video.length === 11 ? '?' : '&') + 'rel=0&vq=' + core_storage_data['quality'];
+        }
     }
 
     video = 'https://youtube.com/embed/' + video;
@@ -45,10 +48,19 @@ function repo_init(){
           'onclick': load_video,
         },
       },
-      'info': '<input id=video type=text><button id=load-video type=button>Load Video</button>',
+      'info': '<input id=video type=text><select id=quality>'
+        + '<option value="">Default'
+        + '<option value=hd1080>1080p'
+        + '<option value=hd720>720p'
+        + '<option value=large>480p'
+        + '<option value=medium>360p'
+        + '<option value=small>240p'
+        + '<option value=tiny>144p'
+        + '</select><button id=load-video type=button>Load Video</button>',
       'menu': true,
       'owner': 'honzi',
       'storage': {
+        'quality': '',
         'video': '',
       },
       'title': 'YouTubeViewer.htm',
