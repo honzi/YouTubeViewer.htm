@@ -55,7 +55,8 @@ function repo_init(){
           'onclick': load_video,
         },
       },
-      'info': '<input id=video type=text><select id=quality>'
+      'info': '<input id=video style="width:370px" type=text><br>'
+        + '<select id=quality>'
         + '<option value="">Default'
         + '<option value=hd1080>1080p'
         + '<option value=hd720>720p'
