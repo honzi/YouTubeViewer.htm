@@ -43,6 +43,13 @@ function load_video(){
 
 function repo_init(){
     core_repo_init({
+      'beforeunload': {
+        'todo': function(){
+            if(core_elements['frame']){
+                return 'The video will be unloaded if you leave.';
+            }
+        },
+      },
       'events': {
         'load-video': {
           'onclick': load_video,
