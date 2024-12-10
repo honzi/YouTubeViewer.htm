@@ -74,12 +74,10 @@ function repo_init(){
       'title': 'YouTubeViewer.htm',
     });
 
-    document.body.style.paddingTop = 0;
-    globalThis.onresize = resize_viewer;
-}
-
-function resize_viewer(){
-    if(core_elements['frame']){
-        frame.height = globalThis.innerHeight - 4;
-    }
+    document.body.style.padding = 0;
+    globalThis.onresize = function(){
+        if(core_elements['frame']){
+            core_elements['frame'].height = globalThis.innerHeight - 4;
+        }
+    };
 }
