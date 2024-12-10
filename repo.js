@@ -23,6 +23,12 @@ function load_video(){
         if(time){
             video += '?start=' + time.substr(0, time.length - 1);
         }
+        if(url.searchParams.has('pp') || url.searchParams.has('si')){
+            url.searchParams.delete('pp');
+            url.searchParams.delete('si');
+            core_elements['video'].value = url.toString();
+            core_storage_save();
+        }
     }
 
     if(core_storage_data['quality'].length){
