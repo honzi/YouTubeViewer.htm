@@ -17,7 +17,7 @@ function load_video(){
           ? url.pathname.substr(1)
           : (url.pathname.includes('/shorts/')
             ? url.pathname.substr(8)
-            : searchParams.get('v'));
+            : url.searchParams.get('v'));
         if(video.length !== 11){
             return;
         }
