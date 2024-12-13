@@ -15,7 +15,9 @@ function load_video(){
         }
         video = url.hostname === 'youtu.be'
           ? url.pathname.substr(1)
-          : url.searchParams.get('v');
+          : (url.pathname.includes('/shorts/')
+            ? url.pathname.substr(8)
+            : searchParams.get('v'));
         if(video.length !== 11){
             return;
         }
