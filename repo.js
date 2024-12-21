@@ -73,7 +73,17 @@ function repo_init(){
         + '<option value=small>240p'
         + '<option value=tiny>144p'
         + '</select><button id=load-video type=button>Load Video</button>',
+      'keybinds': {
+        'Enter': {
+          'todo': function(event){
+              if(core_menu_open){
+                  load_video();
+              }
+          },
+        },
+      },
       'menu': true,
+      'menu-block-events': false,
       'owner': 'honzi',
       'storage': {
         'quality': '',
