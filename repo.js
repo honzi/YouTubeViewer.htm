@@ -8,22 +8,31 @@ function load_video(){
         return;
     }
 
-    if(video.length !== 11){
+    if(video.length === 34){
+        video = 'videoseries?list=' + video;
+
+    }else if(video.length !== 11){
         const url = new URL(video);
         if(!URL.canParse(url)){
             return;
         }
-        video = url.hostname === 'youtu.be'
-          ? url.pathname.substr(1)
-          : (url.pathname.includes('/shorts/')
-            ? url.pathname.substr(8)
-            : url.searchParams.get('v'));
-        if(video.length !== 11){
-            return;
-        }
-        const time = url.searchParams.get('t');
-        if(time){
-            video += '?start=' + time.substr(0, time.length - 1);
+        const playlist = url.searchParams.get('list');
+        if(playlist){
+            video = 'videoseries?list=' + playlist;
+
+        }else{
+            video = url.hostname === 'youtu.be'
+              ? url.pathname.substr(1)
+              : (url.pathname.includes('/shorts/')
+                ? url.pathname.substr(8)
+                : url.searchParams.get('v'));
+            if(video.length !== 11){
+                return;
+            }
+            const time = url.searchParams.get('t');
+            if(time){
+                video += '?start=' + time.substr(0, time.length - 1);
+            }
         }
         if(url.searchParams.has('pp') || url.searchParams.has('si')){
             url.searchParams.delete('pp');
