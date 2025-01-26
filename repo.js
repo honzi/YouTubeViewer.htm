@@ -58,6 +58,12 @@ function load_video(){
     core_escape();
 }
 
+function repo_escape(){
+    core_elements['core-toggle'].style.display = core_menu_open
+      ? 'inline-block'
+      : 'none';
+}
+
 function repo_init(){
     core_repo_init({
       'beforeunload': {
