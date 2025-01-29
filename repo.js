@@ -45,16 +45,9 @@ function load_video(){
     if(core_storage_data['quality'].length){
         video += (video.length === 11 ? '?' : '&') + 'rel=0&vq=' + core_storage_data['quality'];
     }
-    video = 'https://youtube.com/embed/' + video;
 
-    if(core_elements['frame']){
-        core_elements['frame'].src = video;
-
-    }else{
-        document.getElementById('viewer').innerHTML = '<iframe allowfullscreen frameborder=0 height=' + (globalThis.innerHeight - 4) + ' id=frame referrerpolicy=no-referrer src="' + video + '" width=100%></iframe>';
-        core_elements['frame'] = document.getElementById('frame');
-    }
-
+    resize();
+    core_elements['frame'].src = 'https://youtube.com/embed/' + video;
     core_escape();
 }
 
@@ -62,9 +55,7 @@ function repo_init(){
     core_repo_init({
       'beforeunload': {
         'todo': function(){
-            if(core_elements['frame']){
-                return 'The video will be unloaded if you leave.';
-            }
+            return 'The video will be unloaded if you leave.';
         },
       },
       'events': {
@@ -99,12 +90,16 @@ function repo_init(){
         'video': '',
       },
       'title': 'YouTubeViewer.htm',
+      'ui-elements': [
+        'frame',
+      ],
     });
 
     document.body.style.padding = 0;
-    globalThis.onresize = function(){
-        if(core_elements['frame']){
-            core_elements['frame'].height = globalThis.innerHeight - 4;
-        }
-    };
+    globalThis.onresize = resize;
+    resize();
+}
+
+function resize(){
+    core_elements['frame'].height = globalThis.innerHeight - 4;
 }
