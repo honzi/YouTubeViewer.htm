@@ -59,12 +59,19 @@ function repo_init(){
         },
       },
       'events': {
-        'load-video': {
+        'load': {
           'onclick': load_video,
+        },
+        'unload': {
+          'onclick': function(){
+              if(globalThis.confirm('Unload video?')){
+                  core_elements['frame'].src = '';
+              }
+          },
         },
       },
       'info': '<input id=video style="width:370px" type=text><br>'
-        + '<select id=quality>'
+        + '<button id=unload type=button>Unload</button><select id=quality>'
         + '<option value="">Default'
         + '<option value=hd1080>1080p'
         + '<option value=hd720>720p'
@@ -72,7 +79,7 @@ function repo_init(){
         + '<option value=medium>360p'
         + '<option value=small>240p'
         + '<option value=tiny>144p'
-        + '</select><button id=load-video type=button>Load Video</button>',
+        + '</select><button class=medium id=load type=button>Load</button>',
       'keybinds': {
         'Enter': {
           'todo': function(event){
