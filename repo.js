@@ -1,6 +1,9 @@
 'use strict';
 
 function load_video(){
+    if(!core_menu_open){
+        return;
+    }
     core_storage_save();
 
     let video = core_storage_data['video'];
@@ -82,11 +85,7 @@ function repo_init(){
         + '</select><button class=medium id=load type=button>Load</button>',
       'keybinds': {
         'Enter': {
-          'todo': function(event){
-              if(core_menu_open){
-                  load_video();
-              }
-          },
+          'todo': load_video,
         },
       },
       'menu': true,
