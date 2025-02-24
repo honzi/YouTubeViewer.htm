@@ -57,8 +57,8 @@ function load_video(){
 function repo_init(){
     core_repo_init({
       'beforeunload': {
-        'todo': function(){
-            return 'The video will be unloaded if you leave.';
+        'todo': function(event){
+            event.preventDefault();
         },
       },
       'events': {
