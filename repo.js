@@ -58,7 +58,9 @@ function repo_init(){
     core_repo_init({
       'beforeunload': {
         'todo': function(event){
-            event.preventDefault();
+            if(core_elements['frame'].contentDocument === null){
+                event.preventDefault();
+            }
         },
       },
       'events': {
