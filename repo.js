@@ -25,16 +25,16 @@ function load_video(){
 
         }else{
             video = url.hostname === 'youtu.be'
-              ? url.pathname.substr(1)
+              ? url.pathname.substring(1)
               : (url.pathname.includes('/shorts/')
-                ? url.pathname.substr(8)
+                ? url.pathname.substring(8)
                 : url.searchParams.get('v'));
             if(video.length !== 11){
                 return;
             }
             const time = url.searchParams.get('t');
             if(time){
-                video += '?start=' + time.substr(0, time.length - 1);
+                video += '?start=' + time.substring(0, time.length - 1);
             }
         }
         if(url.searchParams.has('pp') || url.searchParams.has('si')){
