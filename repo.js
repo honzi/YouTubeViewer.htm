@@ -6,7 +6,7 @@ function load_video(){
     }
     core_storage_save();
 
-    let video = core_storage_data['video'];
+    let video = core_storage_data.video;
     if(!video){
         return;
     }
@@ -40,17 +40,17 @@ function load_video(){
         if(url.searchParams.has('pp') || url.searchParams.has('si')){
             url.searchParams.delete('pp');
             url.searchParams.delete('si');
-            core_elements['video'].value = url.toString();
+            core_elements.video.value = url.toString();
             core_storage_save();
         }
     }
 
-    if(core_storage_data['quality'].length){
-        video += (video.length === 11 ? '?' : '&') + 'rel=0&vq=' + core_storage_data['quality'];
+    if(core_storage_data.quality.length){
+        video += (video.length === 11 ? '?' : '&') + 'rel=0&vq=' + core_storage_data.quality;
     }
 
     resize();
-    core_elements['frame'].src = 'https://youtube.com/embed/' + video;
+    core_elements.frame.src = 'https://youtube.com/embed/' + video;
     core_escape();
 }
 
@@ -58,7 +58,7 @@ function repo_init(){
     core_repo_init({
       'beforeunload': {
         'todo': function(event){
-            if(core_elements['frame'].contentDocument === null){
+            if(core_elements.frame.contentDocument === null){
                 event.preventDefault();
             }
         },
@@ -70,7 +70,7 @@ function repo_init(){
         'unload': {
           'onclick': function(){
               if(globalThis.confirm('Unload video?')){
-                  core_elements['frame'].src = '';
+                  core_elements.frame.src = '';
               }
           },
         },
@@ -109,5 +109,5 @@ function repo_init(){
 }
 
 function resize(){
-    core_elements['frame'].height = globalThis.innerHeight - 4;
+    core_elements.frame.height = globalThis.innerHeight - 4;
 }
