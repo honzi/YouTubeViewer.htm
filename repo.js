@@ -91,7 +91,7 @@ function repo_init(){
         },
       },
       'menu': true,
-      'menu-block-events': false,
+      'menu_block_events': false,
       'owner': 'honzi',
       'storage': {
         'quality': '',
