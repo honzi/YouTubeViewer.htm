@@ -98,7 +98,7 @@ function repo_init(){
         'video': '',
       },
       'title': 'YouTubeViewer.htm',
-      'ui-elements': [
+      'ui_elements': [
         'frame',
       ],
     });
