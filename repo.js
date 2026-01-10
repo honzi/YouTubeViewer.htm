@@ -87,7 +87,7 @@ function repo_init(){
         + '</select><button class=medium id=load type=button>Load</button>',
       'keybinds': {
         'Enter': {
-          'todo': load_video,
+          'down': load_video,
         },
       },
       'menu': true,
