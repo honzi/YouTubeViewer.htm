@@ -4,7 +4,9 @@ function load_video(){
     if(!core_menu_open){
         return;
     }
-    core_storage_save();
+    core_storage_save({
+      'rebind': false,
+    });
 
     let video = core_storage_data.video;
     if(!video){
@@ -41,7 +43,9 @@ function load_video(){
             url.searchParams.delete('pp');
             url.searchParams.delete('si');
             core_elements.video.value = url.toString();
-            core_storage_save();
+            core_storage_save({
+              'rebind': false,
+            });
         }
     }
 
