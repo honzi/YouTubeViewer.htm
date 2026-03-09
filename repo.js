@@ -55,7 +55,7 @@ function load_video(){
 
     resize();
     core_elements.frame.src = 'https://youtube.com/embed/' + video;
-    core_escape();
+    core_escape(false);
 }
 
 function repo_init(){
