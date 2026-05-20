@@ -79,7 +79,7 @@ function repo_init(){
           },
         },
       },
-      'info': '<input id=video style="width:370px" type=text><br>'
+      'info': '<input id=video style="width:25rem" type=text><br>'
         + '<a href=../guides/repos/youtubeviewer-htm.htm target=_blank>View Docs</a> <button id=unload type=button>Unload</button><select id=quality>'
         + '<option value="">Default'
         + '<option value=hd1080>1080p'
