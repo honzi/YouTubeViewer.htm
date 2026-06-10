@@ -96,7 +96,7 @@ function repo_init(){
       },
       'menu': true,
       'menu_block_events': false,
-      'owner': 'honzi',
+      'owner': 'Honzi',
       'storage': {
         'quality': '',
         'video': '',
