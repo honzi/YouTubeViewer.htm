@@ -94,6 +94,7 @@ function repo_init(){
           'down': load_video,
         },
       },
+      'link': 'https://github.com/honzi/YouTubeViewer.htm',
       'menu': true,
       'menu_block_events': false,
       'owner': 'Honzi',
