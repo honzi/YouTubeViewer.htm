@@ -21,6 +21,22 @@ function load_video(){
         if(!URL.canParse(url)){
             return;
         }
+
+        const params = ['list', 't', 'v'];
+        let updated = false;
+        for(const [key, value] of url.searchParams){
+            if(!params.includes(key)){
+                updated = true;
+                url.searchParams.delete(key);
+            }
+        }
+        if(updated){
+            core_elements.video.value = url.toString();
+            core_storage_save({
+              'rebind': false,
+            });
+        }
+
         const playlist = url.searchParams.get('list');
         if(playlist){
             video = 'videoseries?list=' + playlist;
@@ -31,6 +47,7 @@ function load_video(){
               : (url.pathname.includes('/shorts/')
                 ? url.pathname.substring(8)
                 : url.searchParams.get('v'));
+
             if(video.length !== 11){
                 return;
             }
@@ -38,14 +55,6 @@ function load_video(){
             if(time){
                 video += '?start=' + time.substring(0, time.length - 1);
             }
-        }
-        if(url.searchParams.has('pp') || url.searchParams.has('si')){
-            url.searchParams.delete('pp');
-            url.searchParams.delete('si');
-            core_elements.video.value = url.toString();
-            core_storage_save({
-              'rebind': false,
-            });
         }
     }
 
