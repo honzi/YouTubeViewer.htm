@@ -69,12 +69,10 @@ function load_video(){
 
 function repo_init(){
     core_repo_init({
-      'beforeunload': {
-        'todo': function(event){
-            if(core_elements.frame.contentDocument === null){
-                event.preventDefault();
-            }
-        },
+      'beforeunload': function(event){
+          if(core_elements.frame.contentDocument === null){
+              event.preventDefault();
+          }
       },
       'events': {
         'load': {
@@ -112,9 +110,7 @@ function repo_init(){
         'video': '',
       },
       'title': 'YouTubeViewer.htm',
-      'ui_elements': [
-        'frame',
-      ],
+      'ui_elements': ['frame'],
     });
 
     document.body.style.padding = 0;
