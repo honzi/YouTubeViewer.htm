@@ -69,11 +69,6 @@ function load_video(){
 
 function repo_init(){
     core_repo_init({
-      'beforeunload': function(event){
-          if(core_elements.frame.contentDocument === null){
-              event.preventDefault();
-          }
-      },
       'events': {
         'load': {
           'onclick': load_video,
